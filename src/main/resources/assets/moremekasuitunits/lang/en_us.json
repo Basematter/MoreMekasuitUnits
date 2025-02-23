@@ -26,7 +26,7 @@
   "description.moremekasuitunits.flame_thrower_unit": "Add flame thrower function to meka tool(Using mekasuit bodyamor's hydrogen)",
   "module.moremekasuitunits.flame_thrower": "Mode",
 
-  "module.moremekasuitunits.elytra_acceleration_unit": "elytra_acceleration_unit",
+  "module.moremekasuitunits.elytra_acceleration_unit": "Elytra Acceleration Unit",
   "description.moremekasuitunits.elytra_acceleration_unit": "When flying with elytra, press the jump key to accelerate",
   "module.moremekasuitunits.elytra_acceleration": "Speed Multiplier",
   "module.moremekasuitunits.elytra_acceleration_hud": "Speed Multiplier: %1$s"
