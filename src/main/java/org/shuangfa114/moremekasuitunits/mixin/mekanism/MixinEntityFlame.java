@@ -21,8 +21,8 @@ public abstract class MixinEntityFlame {
     private static Item test(Item original, @Local(argsOnly = true) Player player){
         return MekanismItems.FLAMETHROWER.asItem();
     }
-    @Inject(method = "create",at = @At(value = "INVOKE", target = "Lmekanism/common/entity/EntityFlame;shootFromRotation(Lnet/minecraft/world/entity/Entity;FFFFF)V"))
-    private static void getMekaToolFlameMod(Player player, CallbackInfoReturnable<EntityFlame> cir,@Local EntityFlame entityFlame){
+    @Inject(method = "create",at = @At(value = "RETURN",ordinal = 1),remap = false)
+    private static void getMekaToolFlameMod(Player player, CallbackInfoReturnable<EntityFlame> cir, @Local EntityFlame entityFlame){
         IModule<ModuleFlameThrowerUnit> module = UnitUtil.getMekaToolUnit(player, MekanismModulesInit.MODULE_FLAME_THROWER_UNIT);
         if(module!=null){
             ((EntityFlameAccessor) entityFlame).setMode(module.getCustomInstance().getFlameMode());
