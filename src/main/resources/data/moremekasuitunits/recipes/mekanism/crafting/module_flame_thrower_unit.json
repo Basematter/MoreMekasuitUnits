@@ -1,0 +1,25 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "result":{
+    "item":"moremekasuitunits:module_flame_thrower_unit"
+  },
+  "pattern":[
+    "I#I",
+    "IAI",
+    "PPP"
+  ],
+  "key":{
+    "I":{
+      "tag":"mekanism:alloys/reinforced"
+    },
+    "A":{
+      "item":"mekanism:module_base"
+    },
+    "#":{
+      "item":"mekanism:flamethrower"
+    },
+    "P":{
+      "tag":"forge:pellets/polonium"
+    }
+  }
+}

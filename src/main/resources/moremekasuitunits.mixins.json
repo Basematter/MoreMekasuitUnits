@@ -1,0 +1,33 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.shuangfa114.moremekasuitunits.mixin",
+  "mixinextras": {
+    "minVersion": "0.5.0-beta.5"
+  },
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "moremekasuitunits.refmap.json",
+  "mixins": [
+    "mekanism.EntityFlameAccessor",
+    "mekanism.MixinCommonPlayerTickHandler",
+    "mekanism.MixinEntityFlame",
+    "mekanism.MixinItemMekaSuitArmor",
+    "mekanism.ModulesHelperAccessor",
+    "tacz.MixinLivingEntityAim",
+    "tacz.MixinModernKineticGunItem",
+    "tacz.MixinModernKineticGunScriptAPI",
+    "tacz.MixinShooterDataHolder",
+    "thirst.MixinItemMekaSuitArmor"
+  ],
+  "client": [
+    "mekanism.MixinClientTickHandler",
+    "mekanism.MixinRenderTickHandler",
+    "tacz.MixinCameraSetupEvent",
+    "tacz.MixinLocalPlayerAim",
+    "tacz.MixinObjectAnimationRunner",
+    "thirst.MixinMekaSuitBarDecorator"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

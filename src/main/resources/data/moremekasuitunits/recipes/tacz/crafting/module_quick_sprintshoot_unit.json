@@ -1,0 +1,31 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "conditions":[
+    {
+      "type":"forge:item_exists",
+      "item":"moremekasuitunits:module_quick_sprintshoot_unit"
+    }
+  ],
+  "result":{
+    "item":"moremekasuitunits:module_quick_sprintshoot_unit"
+  },
+  "pattern":[
+    "I#I",
+    "IAI",
+    "PPP"
+  ],
+  "key":{
+    "I":{
+      "tag":"mekanism:alloys/reinforced"
+    },
+    "A":{
+      "item":"mekanism:module_base"
+    },
+    "#":{
+      "item":"mekanism:hdpe_rod"
+    },
+    "P":{
+      "tag":"forge:pellets/polonium"
+    }
+  }
+}
