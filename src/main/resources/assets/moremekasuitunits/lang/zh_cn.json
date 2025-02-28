@@ -29,5 +29,10 @@
   "module.moremekasuitunits.elytra_acceleration_unit": "鞘翅加速单元",
   "description.moremekasuitunits.elytra_acceleration_unit": "在使用鞘翅飞行时,按跳跃键加速",
   "module.moremekasuitunits.elytra_acceleration": "速度",
-  "module.moremekasuitunits.elytra_acceleration_hud": "速度: %1$s"
+  "module.moremekasuitunits.elytra_acceleration_hud": "速度: %1$s",
+
+  "module.moremekasuitunits.looting_modification_unit" : "抢夺单元",
+  "description.moremekasuitunits.looting_modification_unit": "提升抢夺附魔的效果(附魔等级最小=1 最大=5)",
+  "module.moremekasuitunits.looting_modification": "附魔等级",
+  "module.moremekasuitunits.looting_modification_hud": "附魔等级: %1$s"
 }

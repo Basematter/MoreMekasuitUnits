@@ -7,42 +7,49 @@ import mekanism.api.gear.config.IModuleConfigItem;
 import mekanism.api.gear.config.ModuleConfigItemCreator;
 import mekanism.api.gear.config.ModuleEnumData;
 import mekanism.api.text.EnumColor;
-import mekanism.api.text.IHasTextComponent;
 import mekanism.api.text.TextComponentUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.ToolAction;
 import org.shuangfa114.moremekasuitunits.init.ModLang;
+import org.shuangfa114.moremekasuitunits.module.gear.WithOffMode;
+import org.shuangfa114.moremekasuitunits.util.IModeEnum;
 
 import java.util.function.Consumer;
 
-public class ModuleQuickReloadingUnit implements ICustomModule<ModuleQuickReloadingUnit> {
+public class ModuleQuickReloadingUnit implements ICustomModule<ModuleQuickReloadingUnit>, WithOffMode {
     private IModuleConfigItem<ReloadingTime> reloadingTime;
+
     public ModuleQuickReloadingUnit() {
     }
 
 
     @Override
     public void init(IModule<ModuleQuickReloadingUnit> module, ModuleConfigItemCreator configItemCreator) {
-        this.reloadingTime = configItemCreator.createConfigItem("reloading_time", ModLang.MODULE_QUICK_RELOADING, new ModuleEnumData(ReloadingTime.LOW, module.getInstalledCount()+1));
+        this.reloadingTime = configItemCreator.createConfigItem("reloading_time", ModLang.MODULE_QUICK_RELOADING, new ModuleEnumData(ReloadingTime.LOW, module.getInstalledCount() + 1));
     }
 
-    public float getReloadingTime(){
+    public float getReloadingTime() {
         return this.reloadingTime.get().getReloadingTime();
     }
 
-    public Component getTextComponent(){return this.reloadingTime.get().getTextComponent();}
+    public Component getTextComponent() {
+        return this.reloadingTime.get().getTextComponent();
+    }
 
     @Override
     public void addHUDStrings(IModule<ModuleQuickReloadingUnit> module, Player player, Consumer<Component> hudStringAdder) {
-        if(module.isEnabled()){
-            hudStringAdder.accept(ModLang.MODULE_QUICK_RELOADING_HUD.translateColored(EnumColor.DARK_GRAY, EnumColor.INDIGO,getTextComponent().getString()));
+        if (module.isEnabled()) {
+            hudStringAdder.accept(ModLang.MODULE_QUICK_RELOADING_HUD.translateColored(EnumColor.DARK_GRAY, EnumColor.INDIGO, getTextComponent().getString()));
         }
     }
 
+    @Override
+    public boolean isOffMode() {
+        return this.reloadingTime.get().getOffMode().equals(this.reloadingTime.get());
+    }
+
     @NothingNullByDefault
-    public enum ReloadingTime implements IHasTextComponent {
+    public enum ReloadingTime implements IModeEnum {
         OFF(1F),
         LOW(0.8F),
         MEDIUM(0.6F),
@@ -53,8 +60,8 @@ public class ModuleQuickReloadingUnit implements ICustomModule<ModuleQuickReload
         private final Component label;
 
         ReloadingTime(float ReloadingTime) {
-            this.ReloadingTime=ReloadingTime;
-            this.label = TextComponentUtil.getString((int)(ReloadingTime*100)+"%");
+            this.ReloadingTime = ReloadingTime;
+            this.label = TextComponentUtil.getString((int) (ReloadingTime * 100) + "%");
         }
 
         public Component getTextComponent() {
@@ -63,6 +70,11 @@ public class ModuleQuickReloadingUnit implements ICustomModule<ModuleQuickReload
 
         public float getReloadingTime() {
             return this.ReloadingTime;
+        }
+
+        @Override
+        public IModeEnum getOffMode() {
+            return OFF;
         }
     }
 }

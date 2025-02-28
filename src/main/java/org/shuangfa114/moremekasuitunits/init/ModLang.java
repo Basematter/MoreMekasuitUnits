@@ -1,7 +1,6 @@
 package org.shuangfa114.moremekasuitunits.init;
 
 import mekanism.api.text.ILangEntry;
-import mekanism.common.Mekanism;
 import net.minecraft.Util;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +15,9 @@ public enum ModLang implements ILangEntry {
     MODULE_QUICK_RELOADING_HUD("quick_reloading_hud"),
     MODULE_FLAME_THROWER("flame_thrower"),
     MODULE_ELYTRA_ACCELERATION("elytra_acceleration"),
-    MODULE_ELYTRA_ACCELERATION_HUD("elytra_acceleration_hud");
+    MODULE_ELYTRA_ACCELERATION_HUD("elytra_acceleration_hud"),
+    MODULE_LOOTING_MODIFICATION("looting_modification"),
+    MODULE_LOOTING_MODIFICATION_HUD("looting_modification_hud");
     private final String key;
 
     ModLang(String path){

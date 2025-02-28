@@ -13,6 +13,7 @@
     "mekanism.MixinEntityFlame",
     "mekanism.MixinItemMekaSuitArmor",
     "mekanism.ModulesHelperAccessor",
+    "minecraft.MixinForgeHooks",
     "tacz.MixinLivingEntityAim",
     "tacz.MixinModernKineticGunItem",
     "tacz.MixinModernKineticGunScriptAPI",

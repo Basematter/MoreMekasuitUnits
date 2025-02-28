@@ -1,0 +1,25 @@
+{
+  "type":"minecraft:crafting_shaped",
+  "result":{
+    "item":"moremekasuitunits:module_looting_modification_unit"
+  },
+  "pattern":[
+    "I#I",
+    "IAI",
+    "PPP"
+  ],
+  "key":{
+    "I":{
+      "tag":"mekanism:alloys/reinforced"
+    },
+    "A":{
+      "item":"mekanism:module_base"
+    },
+    "#":{
+      "item":"mekanism:bio_fuel"
+    },
+    "P":{
+      "tag":"forge:pellets/polonium"
+    }
+  }
+}

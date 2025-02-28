@@ -20,7 +20,7 @@ import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import org.shuangfa114.moremekasuitunits.MoreMekasuitUnits;
-import org.shuangfa114.moremekasuitunits.init.thirst.ThirstUnitConfig;
+import org.shuangfa114.moremekasuitunits.init.ModConfig;
 import org.shuangfa114.moremekasuitunits.util.UnitUtil;
 
 import java.util.Optional;
@@ -33,14 +33,14 @@ public class ModuleAutomaticDrinkingUnit implements ICustomModule<ModuleAutomati
 
     @Override
     public void tickServer(IModule<ModuleAutomaticDrinkingUnit> module, Player player) {
-        FloatingLong usage = UnitUtil.convertToFE(ThirstUnitConfig.base.energyUsageAutomaticDrinking.get());
+        FloatingLong usage = UnitUtil.convertToFE(ModConfig.base.energyUsageAutomaticDrinking.get());
         if (MekanismUtils.isPlayingMode(player)) {
             player.getCapability(ModCapabilities.PLAYER_THIRST).ifPresent((cap) -> {
                 ItemStack container = module.getContainer();
                 ItemMekaSuitArmor item = (ItemMekaSuitArmor) container.getItem();
                 CompoundTag purity = new CompoundTag();
                 purity.putInt("Purity", 3);
-                int mbPerDrinking = ThirstUnitConfig.base.drinkingMBPerDrinking.get();
+                int mbPerDrinking = ModConfig.base.drinkingMBPerDrinking.get();
                 int needed = Math.min(20 - cap.getThirst(), item.getContainedFluid(container, new FluidStack(Fluids.WATER, 1, purity)).getAmount() / mbPerDrinking);
                 int toDrink = Math.min(module.getContainerEnergy().divideToInt(usage), needed);
                 if (toDrink >= 1) {
@@ -48,7 +48,7 @@ public class ModuleAutomaticDrinkingUnit implements ICustomModule<ModuleAutomati
                     FluidUtil.getFluidHandler(container).ifPresent((handler) -> {
                         handler.drain(new FluidStack(Fluids.WATER, mbPerDrinking, purity), IFluidHandler.FluidAction.EXECUTE);
                     });
-                    cap.drink(player, ThirstUnitConfig.base.thirstPerDrinking.get(), ThirstUnitConfig.base.quenchedPerDrinking.get());
+                    cap.drink(player, ModConfig.base.thirstPerDrinking.get(), ModConfig.base.quenchedPerDrinking.get());
                 }
             });
         }
@@ -61,7 +61,7 @@ public class ModuleAutomaticDrinkingUnit implements ICustomModule<ModuleAutomati
             Optional<IFluidHandlerItem> capability = FluidUtil.getFluidHandler(container).resolve();
             CompoundTag purity = new CompoundTag();
             purity.putInt("Purity", 3);
-            int max = ThirstUnitConfig.base.cleanWaterMaxStorage.getAsInt();
+            int max = ModConfig.base.cleanWaterMaxStorage.getAsInt();
             if (capability.isPresent()) {
                 IFluidHandlerItem handler = capability.get();
                 handler.drain(new FluidStack(Fluids.WATER, max, purity), IFluidHandler.FluidAction.SIMULATE);

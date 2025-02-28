@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.shuangfa114.moremekasuitunits.module.gear.WithOffMode;
 
 public class UnitUtil {
     public static <T extends ICustomModule<T>>@Nullable IModule<T> getUnit(LivingEntity livingEntity, IModuleDataProvider<T> unit,EquipmentSlot equipmentSlot) {
@@ -32,10 +33,14 @@ public class UnitUtil {
         return player.getItemBySlot(equipmentSlot);
     }
     public static boolean isValidWithNull(IModule<?> module, LivingEntity livingEntity, FloatingLong floatingLong){
-        return module!=null&&module.isEnabled()&&module.canUseEnergy(livingEntity, convertToFE(floatingLong));
+        return module!=null&&isValid(module,livingEntity,floatingLong);
     }
     public static boolean isValid(@NotNull IModule<?> module, LivingEntity livingEntity, FloatingLong floatingLong){
-        return module.isEnabled()&&module.canUseEnergy(livingEntity, convertToFE(floatingLong));
+        boolean t = true;
+        if(module.getCustomInstance() instanceof WithOffMode withOffMode){
+            t=!withOffMode.isOffMode();
+        }
+        return module.isEnabled()&&t&&module.canUseEnergy(livingEntity, convertToFE(floatingLong));
     }
     public static FloatingLong convertToFE(FloatingLong floatingLong){
         return UnitDisplayUtils.EnergyUnit.FORGE_ENERGY.convertFrom(floatingLong);

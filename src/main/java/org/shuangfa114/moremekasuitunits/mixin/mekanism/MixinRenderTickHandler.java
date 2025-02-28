@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.shuangfa114.moremekasuitunits.init.mekanism.MekanismModulesInit;
-import org.shuangfa114.moremekasuitunits.init.mekanism.MekanismUnitConfig;
+import org.shuangfa114.moremekasuitunits.init.ModConfig;
 import org.shuangfa114.moremekasuitunits.module.gear.mekanism.ModuleFlameThrowerUnit;
 import org.shuangfa114.moremekasuitunits.util.UnitUtil;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,7 +23,7 @@ public abstract class MixinRenderTickHandler {
     @ModifyExpressionValue(method = "tickEnd",at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;getItem()Lnet/minecraft/world/item/Item;"))
     private Item fakeThrower(Item original, @Local(ordinal = 1) Player player){
         IModule<ModuleFlameThrowerUnit> module = UnitUtil.getMekaToolUnit(player, MekanismModulesInit.MODULE_FLAME_THROWER_UNIT);
-        if(UnitUtil.isValidWithNull(module,player, MekanismUnitConfig.base.energyUsageFlameThrower.get())){
+        if(UnitUtil.isValidWithNull(module,player, ModConfig.base.energyUsageFlameThrower.get())){
             return MekanismItems.FLAMETHROWER.asItem();
         }
         return original;
@@ -31,7 +31,7 @@ public abstract class MixinRenderTickHandler {
     @ModifyExpressionValue(method = "tickEnd",at = @At(value = "INVOKE", target = "Lmekanism/common/util/ChemicalUtil;hasGas(Lnet/minecraft/world/item/ItemStack;)Z"),remap = false)
     private boolean isArmorHasGas(boolean original, @Local(ordinal = 1) Player player){
         IModule<ModuleFlameThrowerUnit> module = UnitUtil.getMekaToolUnit(player, MekanismModulesInit.MODULE_FLAME_THROWER_UNIT);
-        if(UnitUtil.isValidWithNull(module,player,MekanismUnitConfig.base.energyUsageFlameThrower.get())){
+        if(UnitUtil.isValidWithNull(module,player, ModConfig.base.energyUsageFlameThrower.get())){
             ItemStack itemStack = UnitUtil.getEquipment(player, EquipmentSlot.CHEST);
             return ChemicalUtil.hasChemical(itemStack, MekanismGases.HYDROGEN.getChemical());
         }

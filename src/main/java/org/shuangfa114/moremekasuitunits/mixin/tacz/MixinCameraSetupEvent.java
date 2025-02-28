@@ -7,8 +7,8 @@ import mekanism.api.gear.IModule;
 import mekanism.api.math.FloatingLong;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
+import org.shuangfa114.moremekasuitunits.init.ModConfig;
 import org.shuangfa114.moremekasuitunits.init.tacz.TaczModulesInit;
-import org.shuangfa114.moremekasuitunits.init.tacz.TaczUnitConfig;
 import org.shuangfa114.moremekasuitunits.module.gear.tacz.ModuleRecoilOffsetUnit;
 import org.shuangfa114.moremekasuitunits.util.UnitUtil;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,7 +21,7 @@ public abstract class MixinCameraSetupEvent {
     private static float pitch(float modifier, @Local LocalPlayer shooter) {
         IModule<ModuleRecoilOffsetUnit> module = UnitUtil.getUnit(shooter, TaczModulesInit.MODULE_RECOIL_OFFSET_UNIT, EquipmentSlot.CHEST);
         if (module != null) {
-            FloatingLong floatingLong = TaczUnitConfig.base.energyUsageRecoilOffset.get().multiply(1/module.getCustomInstance().getRecoil());
+            FloatingLong floatingLong = ModConfig.base.energyUsageRecoilOffset.get().multiply(1/module.getCustomInstance().getRecoil());
             if(UnitUtil.isValid(module,shooter,floatingLong)){
                 modifier *= module.getCustomInstance().getRecoil();
                 module.useEnergy(shooter, floatingLong);

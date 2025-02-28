@@ -9,8 +9,8 @@ import mekanism.api.gear.IModule;
 import mekanism.api.math.FloatingLong;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import org.shuangfa114.moremekasuitunits.init.ModConfig;
 import org.shuangfa114.moremekasuitunits.init.tacz.TaczModulesInit;
-import org.shuangfa114.moremekasuitunits.init.tacz.TaczUnitConfig;
 import org.shuangfa114.moremekasuitunits.module.gear.tacz.ModuleQuickAimingUnit;
 import org.shuangfa114.moremekasuitunits.util.UnitUtil;
 import org.shuangfa114.moremekasuitunits.util.tacz.IShooterDataHolder;
@@ -36,7 +36,7 @@ public abstract class MixinLivingEntityAim {
     public float aimTimeWithMekasuit(float aimTime) {
         IModule<ModuleQuickAimingUnit> module = UnitUtil.getUnit(this.shooter, TaczModulesInit.MODULE_QUICK_AIMING_UNIT, EquipmentSlot.CHEST);
         if (module != null) {
-            FloatingLong floatingLong = UnitUtil.convertToFE(TaczUnitConfig.base.energyUsageQuickAiming.get().multiply(1 / module.getCustomInstance().getAimTime()));
+            FloatingLong floatingLong = UnitUtil.convertToFE(ModConfig.base.energyUsageQuickAiming.get().multiply(1 / module.getCustomInstance().getAimTime()));
             if(UnitUtil.isValid(module,this.shooter,floatingLong)){
                 aimTime *= module.getCustomInstance().getAimTime();
             }
@@ -52,7 +52,7 @@ public abstract class MixinLivingEntityAim {
         if (!iShooterDataHolder.getLastAim()) {
             IModule<ModuleQuickAimingUnit> module = UnitUtil.getUnit(this.shooter, TaczModulesInit.MODULE_QUICK_AIMING_UNIT, EquipmentSlot.CHEST);
             if (module != null) {
-                FloatingLong floatingLong = UnitUtil.convertToFE(TaczUnitConfig.base.energyUsageQuickAiming.get().multiply(1 / module.getCustomInstance().getAimTime()));
+                FloatingLong floatingLong = UnitUtil.convertToFE(ModConfig.base.energyUsageQuickAiming.get().multiply(1 / module.getCustomInstance().getAimTime()));
                 if(UnitUtil.isValid(module,this.shooter,floatingLong)){
                     module.useEnergy(this.shooter, floatingLong);
                 }
@@ -69,7 +69,7 @@ public abstract class MixinLivingEntityAim {
         if (iShooterDataHolder.getLastAim()) {
             IModule<ModuleQuickAimingUnit> module = UnitUtil.getUnit(this.shooter, TaczModulesInit.MODULE_QUICK_AIMING_UNIT, EquipmentSlot.CHEST);
             if (module != null) {
-                FloatingLong floatingLong = UnitUtil.convertToFE(TaczUnitConfig.base.energyUsageQuickAiming.get().multiply(1 / module.getCustomInstance().getAimTime()));
+                FloatingLong floatingLong = UnitUtil.convertToFE(ModConfig.base.energyUsageQuickAiming.get().multiply(1 / module.getCustomInstance().getAimTime()));
                 if(UnitUtil.isValid(module,this.shooter,floatingLong)){
                     module.useEnergy(this.shooter, floatingLong);
                 }

@@ -14,11 +14,12 @@ import org.shuangfa114.moremekasuitunits.init.thirst.ThirstItemInit;
 public class ModTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MoreMekasuitUnits.MODID);
     public static final RegistryObject<CreativeModeTab> UNIT_TAB;
+
     static {
-        UNIT_TAB = CREATIVE_MODE_TABS.register("unit_tab",()-> CreativeModeTab.builder()
+        UNIT_TAB = CREATIVE_MODE_TABS.register("unit_tab", () -> CreativeModeTab.builder()
                 .title(Component.translatable("itemGroup.moremekasuitunits"))
                 .icon(() -> {
-                    if(MoreMekasuitUnits.isTaczLoaded){
+                    if (MoreMekasuitUnits.isTaczLoaded) {
                         return TaczItemInit.QUICK_AIMING_UNIT.get().getDefaultInstance();
                     }
                     return MekanismItems.MODULE_BASE.get().getDefaultInstance();
@@ -27,10 +28,11 @@ public class ModTabs {
                     {
                         output.accept(MekanismItemInit.FLAME_THROWER_UNIT.get());
                         output.accept(MekanismItemInit.ELYTRA_ACCELERATION_UNIT.get());
-                        if(MoreMekasuitUnits.isThirstLoaded){
+                        output.accept(MekanismItemInit.LOOTING_MODIFICATION_UNIT.get());
+                        if (MoreMekasuitUnits.isThirstLoaded) {
                             output.accept(ThirstItemInit.AUTOMATIC_DRINKING_UNIT.get());
                         }
-                        if(MoreMekasuitUnits.isTaczLoaded){
+                        if (MoreMekasuitUnits.isTaczLoaded) {
                             output.accept(TaczItemInit.QUICK_AIMING_UNIT.get());
                             output.accept(TaczItemInit.QUICK_RELOADING_UNIT.get());
                             output.accept(TaczItemInit.QUICK_SPRINTSHOOT_UNIT.get());

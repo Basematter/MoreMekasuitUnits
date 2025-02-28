@@ -8,23 +8,17 @@ import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.shuangfa114.moremekasuitunits.init.ModEvent;
 import org.shuangfa114.moremekasuitunits.init.ModTabs;
 import org.shuangfa114.moremekasuitunits.init.mekanism.MekanismItemInit;
-import org.shuangfa114.moremekasuitunits.init.mekanism.MekanismModEvent;
 import org.shuangfa114.moremekasuitunits.init.mekanism.MekanismModulesInit;
-import org.shuangfa114.moremekasuitunits.init.mekanism.MekanismUnitConfig;
+import org.shuangfa114.moremekasuitunits.init.ModConfig;
 import org.shuangfa114.moremekasuitunits.init.tacz.TaczItemInit;
-import org.shuangfa114.moremekasuitunits.init.tacz.TaczModEvent;
 import org.shuangfa114.moremekasuitunits.init.tacz.TaczModulesInit;
-import org.shuangfa114.moremekasuitunits.init.tacz.TaczUnitConfig;
-import org.shuangfa114.moremekasuitunits.init.thirst.ThirstUnitConfig;
 import org.shuangfa114.moremekasuitunits.init.thirst.ThirstItemInit;
-import org.shuangfa114.moremekasuitunits.init.thirst.ThirstModEvent;
 import org.shuangfa114.moremekasuitunits.init.thirst.ThirstModulesInit;
 
-import java.util.IdentityHashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MoreMekasuitUnits.MODID)
@@ -46,23 +40,19 @@ public class MoreMekasuitUnits {
         //Mekanism
         MekanismItemInit.ITEMS.register(modEventBus);
         MekanismModulesInit.MODULES.register(modEventBus);
-        MekanismConfigHelper.registerConfig(modContainer, MekanismUnitConfig.base);
-        modEventBus.register(MekanismModEvent.class);
+        MekanismConfigHelper.registerConfig(modContainer, ModConfig.base);
         //Tacz
         if(isTaczLoaded){
             TaczItemInit.ITEMS.register(modEventBus);
             TaczModulesInit.MODULES.register(modEventBus);
-            MekanismConfigHelper.registerConfig(modContainer, TaczUnitConfig.base);
-            modEventBus.register(TaczModEvent.class);
         }
         //Thirst
         if(isThirstLoaded){
             ThirstItemInit.ITEMS.register(modEventBus);
             ThirstModulesInit.MODULES.register(modEventBus);
-            MekanismConfigHelper.registerConfig(modContainer, ThirstUnitConfig.base);
-            modEventBus.register(ThirstModEvent.class);
         }
         ModTabs.CREATIVE_MODE_TABS.register(modEventBus);
+        modEventBus.register(ModEvent.class);
     }
 
 }

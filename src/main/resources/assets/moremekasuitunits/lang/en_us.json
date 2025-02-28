@@ -29,5 +29,10 @@
   "module.moremekasuitunits.elytra_acceleration_unit": "Elytra Acceleration Unit",
   "description.moremekasuitunits.elytra_acceleration_unit": "When flying with elytra, press the jump key to accelerate",
   "module.moremekasuitunits.elytra_acceleration": "Speed Multiplier",
-  "module.moremekasuitunits.elytra_acceleration_hud": "Speed Multiplier: %1$s"
+  "module.moremekasuitunits.elytra_acceleration_hud": "Speed Multiplier: %1$s",
+
+  "module.moremekasuitunits.looting_modification_unit" : "Looting Unit",
+  "description.moremekasuitunits.looting_modification_unit": "Boosts the effect of looting enchantments (min. 1 max. 5)",
+  "module.moremekasuitunits.looting_modification": "Looting Level Multiplier",
+  "module.moremekasuitunits.looting_modification_hud": "Looting Level Multiplier: %1$s"
 }

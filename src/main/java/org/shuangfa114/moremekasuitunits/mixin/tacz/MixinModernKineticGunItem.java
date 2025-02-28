@@ -15,8 +15,8 @@ import org.luaj.vm2.LuaFunction;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.Varargs;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
+import org.shuangfa114.moremekasuitunits.init.ModConfig;
 import org.shuangfa114.moremekasuitunits.init.tacz.TaczModulesInit;
-import org.shuangfa114.moremekasuitunits.init.tacz.TaczUnitConfig;
 import org.shuangfa114.moremekasuitunits.module.gear.tacz.ModuleQuickReloadingUnit;
 import org.shuangfa114.moremekasuitunits.util.UnitUtil;
 import org.spongepowered.asm.mixin.Mixin;
@@ -48,7 +48,7 @@ public abstract class MixinModernKineticGunItem {
             if (reloadType.isReloadFinishing()) {
                 IModule<ModuleQuickReloadingUnit> module = UnitUtil.getUnit(shooter, TaczModulesInit.MODULE_QUICK_RELOADING_UNIT, EquipmentSlot.CHEST);
                 if (module != null) {
-                    FloatingLong floatingLong = UnitUtil.convertToFE(TaczUnitConfig.base.energyUsageQuickReloading.get().multiply(1 / module.getCustomInstance().getReloadingTime()));
+                    FloatingLong floatingLong = UnitUtil.convertToFE(ModConfig.base.energyUsageQuickReloading.get().multiply(1 / module.getCustomInstance().getReloadingTime()));
                     if (UnitUtil.isValid(module, shooter, floatingLong)) {
                         module.useEnergy(shooter, floatingLong);
                     }
@@ -65,7 +65,7 @@ public abstract class MixinModernKineticGunItem {
         LivingEntity shooter = api.getShooter();
         IModule<ModuleQuickReloadingUnit> module = UnitUtil.getUnit(shooter, TaczModulesInit.MODULE_QUICK_RELOADING_UNIT, EquipmentSlot.CHEST);
         if (module != null) {
-            FloatingLong floatingLong = UnitUtil.convertToFE(TaczUnitConfig.base.energyUsageQuickReloading.get().multiply(1 / module.getCustomInstance().getReloadingTime()));
+            FloatingLong floatingLong = UnitUtil.convertToFE(ModConfig.base.energyUsageQuickReloading.get().multiply(1 / module.getCustomInstance().getReloadingTime()));
             if (UnitUtil.isValid(module, shooter, floatingLong)) {
                 module.useEnergy(shooter, floatingLong);
             }

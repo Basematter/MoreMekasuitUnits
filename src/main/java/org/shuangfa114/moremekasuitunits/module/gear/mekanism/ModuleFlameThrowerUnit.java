@@ -8,12 +8,10 @@ import mekanism.api.gear.config.ModuleConfigItemCreator;
 import mekanism.api.gear.config.ModuleEnumData;
 import mekanism.api.text.EnumColor;
 import mekanism.api.text.IHasTextComponent;
-import mekanism.api.text.TextComponentUtil;
 import mekanism.common.item.gear.ItemFlamethrower;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import org.shuangfa114.moremekasuitunits.init.ModLang;
-import org.shuangfa114.moremekasuitunits.module.gear.tacz.ModuleRecoilOffsetUnit;
 
 import java.util.function.Consumer;
 
