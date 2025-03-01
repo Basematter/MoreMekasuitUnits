@@ -22,7 +22,7 @@
       "item":"mekanism:module_base"
     },
     "#":{
-      "type": "forge:partial_nbt",
+      "type": "forge:nbt",
       "item":"tacz:attachment",
       "nbt": {
         "AttachmentId": "tacz:sight_552"
