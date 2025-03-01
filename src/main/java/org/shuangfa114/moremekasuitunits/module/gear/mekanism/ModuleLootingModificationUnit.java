@@ -50,8 +50,8 @@ public class ModuleLootingModificationUnit implements ICustomModule<ModuleLootin
     @NothingNullByDefault
     public enum Multiplier implements IModeEnum {
         OFF(1F),
-        MEDIUM(2F),
-        HIGH(4F);
+        MEDIUM(2.5F),
+        HIGH(5F);
 
         private final float multiplier;
         private final Component label;

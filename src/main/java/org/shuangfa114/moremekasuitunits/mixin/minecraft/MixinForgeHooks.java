@@ -3,6 +3,7 @@ package org.shuangfa114.moremekasuitunits.mixin.minecraft;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import mekanism.api.gear.IModule;
+import mekanism.api.math.FloatingLong;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.ForgeHooks;
@@ -19,8 +20,10 @@ public class MixinForgeHooks {
     private static int modifyLootingLevel(int original, @Local(argsOnly = true, ordinal = 1) Entity killer) {
         if (killer instanceof Player player) {
             IModule<ModuleLootingModificationUnit> module = UnitUtil.getMekaToolUnit(player, MekanismModulesInit.MODULE_LOOTING_MODIFICATION_UNIT);
-            if (UnitUtil.isValidWithNull(module, player, ModConfig.base.energyUsageLootingModification.get())) {
-                original = (int) (Math.min((original <= 0 ? 1 : original), 10) * module.getCustomInstance().getMultiplier());
+            FloatingLong floatingLong = ModConfig.base.energyUsageLootingModification.get();
+            if (UnitUtil.isValidWithNull(module, player, floatingLong)) {
+                original = (int) (Math.min((original <= 0 ? 1 : original), 15) * module.getCustomInstance().getMultiplier());
+                module.useEnergy(player,floatingLong);
             }
         }
         return original;
