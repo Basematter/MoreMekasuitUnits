@@ -21,7 +21,6 @@
       "nbt": {
         "StoredEnchantments": [
           {
-            "lvl": 3,
             "id": "minecraft:looting"
           }
         ]
