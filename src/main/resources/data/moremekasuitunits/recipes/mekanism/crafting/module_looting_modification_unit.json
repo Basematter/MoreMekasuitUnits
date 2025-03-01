@@ -16,16 +16,9 @@
       "item":"mekanism:module_base"
     },
     "#":{
-      "type": "forge:partial_nbt",
+      "type": "forge:nbt",
       "item":"minecraft:enchanted_book",
-      "nbt": {
-        "StoredEnchantments": [
-          {
-            "lvl": 3,
-            "id": "minecraft:looting"
-          }
-        ]
-      }
+      "nbt": "{StoredEnchantments:[{lvl:3s,id:'minecraft:looting'}]}"
     },
     "P":{
       "tag":"forge:pellets/polonium"
