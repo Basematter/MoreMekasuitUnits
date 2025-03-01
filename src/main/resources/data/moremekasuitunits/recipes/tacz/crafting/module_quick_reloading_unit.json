@@ -22,7 +22,11 @@
       "item":"mekanism:module_base"
     },
     "#":{
-      "item":"mekanism:ultimate_logistical_transporter"
+      "type": "forge:partial_nbt",
+      "item":"tacz:attachment",
+      "nbt": {
+        "AttachmentId": "tacz:light_extended_mag_3"
+      }
     },
     "P":{
       "tag":"forge:pellets/polonium"

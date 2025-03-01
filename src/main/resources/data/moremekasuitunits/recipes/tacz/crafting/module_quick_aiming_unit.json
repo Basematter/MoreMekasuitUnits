@@ -22,7 +22,11 @@
       "item":"mekanism:module_base"
     },
     "#":{
-      "item":"mekanism:laser_amplifier"
+      "type": "forge:partial_nbt",
+      "item":"tacz:attachment",
+      "nbt": {
+        "AttachmentId": "tacz:sight_552"
+      }
     },
     "P":{
       "tag":"forge:pellets/polonium"

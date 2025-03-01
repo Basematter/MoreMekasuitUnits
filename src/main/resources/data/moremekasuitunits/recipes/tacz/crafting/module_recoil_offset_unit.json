@@ -22,7 +22,11 @@
       "item":"mekanism:module_base"
     },
     "#":{
-      "item":"mekanism:hdpe_sheet"
+      "type": "forge:partial_nbt",
+      "item":"tacz:attachment",
+      "nbt": {
+        "AttachmentId": "tacz:oem_stock_heavy"
+      }
     },
     "P":{
       "tag":"forge:pellets/polonium"

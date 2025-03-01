@@ -16,7 +16,16 @@
       "item":"mekanism:module_base"
     },
     "#":{
-      "item":"mekanism:bio_fuel"
+      "type": "forge:partial_nbt",
+      "item":"minecraft:enchanted_book",
+      "nbt": {
+        "StoredEnchantments": [
+          {
+            "lvl": 3,
+            "id": "minecraft:looting"
+          }
+        ]
+      }
     },
     "P":{
       "tag":"forge:pellets/polonium"
